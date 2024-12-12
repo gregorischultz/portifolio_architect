@@ -9,6 +9,10 @@ export const loginUser = async (email, password) => {
         throw new Error('Usuario nao encontrado')
     };
 
+    if(user.role !== 'admin') {
+        throw new Error('Acesso restrito: apenas o administrador pode fazer login');
+    }
+
     const isPasswordValid =  await bcrypt.compare(password, user.password);
     if(!isPasswordValid) {
         throw new Error('Senha incorreta');
