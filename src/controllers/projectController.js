@@ -63,9 +63,10 @@ export const getAllProjects = async () => {
 //funçao para obter detalhas de um projeto especifico
 export const getProjectById = async (id) => {
     const project = await prisma.project.findUnique({
+        where: { id },
         include: { images: true, videos: true },
     });
-    if(!project) {
+    if (!project) {
         throw new Error('Projeto nao encontrado.');
     }
     return project;
