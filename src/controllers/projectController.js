@@ -22,23 +22,52 @@ export const createProject = async (title, descripition, images, videos) => {
 
 //funçao para atualizar um projeto existente
 export const updateProject = async (id, title, descripition, images, videos) => {
-    const updateProject = await prisma.project.update({
+    const existingProject = await prisma.project.findUnique({
+        where: { id },
+        include: { images: true, videos: true }
+    });
+
+    if (!existingProject) {
+        throw new Error("Projeto nao encontrado");
+    }
+
+    const imageUrlsToAdd = images.filter(
+        (url) => !existingProject.images.some((img) => img.url === url)
+    );
+    const imageIdsToDelete = existingProject.images
+        .filter((img) => !images.includes(img.url))
+        .map((img) => img.id);
+    
+    const videoUrlsToAdd = videos.filter(
+        (url) => !existingProject.videos.some((vid) => vid.url === url)
+    );
+    const videoIdsToDelete = existingProject.videos
+        .filter((vid) => !videos.includes(vid.url))
+        .map((vid) => vid.id);
+
+
+    const updatedProject = await prisma.project.update({
         where: { id },
         data: {
             title,
             descripition,
             images: {
-                deleteMany: {},
-                create: images.map((url) => ({ url })),
+                deleteMany: {
+                    id: { in: imageIdsToDelete },
+                },
+                create: imageUrlsToAdd.map((url) => ({ url })),
             },
+            // Excluir vídeos removidos
             videos: {
-                deleteMany: {},
-                create: videos.map((url) => ({ url })),
+                deleteMany: {
+                    id: { in: videoIdsToDelete },
+                },
+                create: videoUrlsToAdd.map((url) => ({ url })),
             },
         },
         include: { images: true, videos: true },
     });
-    return updateProject;
+    return updatedProject;
 };
 
 
