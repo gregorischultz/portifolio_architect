@@ -5,6 +5,8 @@ import jwt from 'jsonwebtoken'; //aqui eu importo o pacote JWT para verificar os
 export const authenticateToken = (req, res, next) => {
     const authHeader = req.headers.authorization; //essa linha vai obter o token do cabeçalho Authorization
 
+
+    //Esse if abaixo vai verificar se o cabeçalho Authorization esta presente
     if (!authHeader) {
         console.error(`[AUTH ERROR] Token não fornecido. IP: ${req.ip}, Endpoint: ${req.originalUrl}`);
         return res.status(401).json({
@@ -15,7 +17,7 @@ export const authenticateToken = (req, res, next) => {
 
     const token = authHeader.split(' ')[1]; //o token é enviado no formato "bearer <token>"
 
-    if (!token) {
+    if (!token) { //verifica se o token foi extraido corretamente
         console.error(`[AUTH ERROR] Token ausente ou inválido no cabeçalho. IP: ${req.ip}, Endpoint: ${req.originalUrl}`);
         return res.status(401).json({
             message: 'Token inválido',
@@ -53,4 +55,5 @@ export const authenticateToken = (req, res, next) => {
             message: 'Erro interno',
             error: 'Ocorreu um erro inesperado ao verificar o token.'
         });
-    }}
+    }
+}
