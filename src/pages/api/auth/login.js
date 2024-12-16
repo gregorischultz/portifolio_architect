@@ -7,9 +7,15 @@ export default async function handler(req, res) {
 
     try {
         const { email, password } = req.body;
+
+        if (!email || !password) {
+            return res.status(400).json({ message: 'Por favor envie o email e a senha.' })
+        }
+
         const token = await loginUser(email, password);
         res.status(200).json({ token });
     } catch (err) {
+        console.error(`[LOGIN ERROR]: ${err.message}`)
         res.status(401).json({ message: err.message })
     }
 

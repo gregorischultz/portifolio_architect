@@ -31,6 +31,8 @@ export const updateProject = async (id, title, descripition, images, videos) => 
         throw new Error("Projeto nao encontrado");
     }
 
+
+    //Para manter imagens que ja existem e nao foram removidas
     const imageUrlsToAdd = images.filter(
         (url) => !existingProject.images.some((img) => img.url === url)
     );
@@ -38,6 +40,8 @@ export const updateProject = async (id, title, descripition, images, videos) => 
         .filter((img) => !images.includes(img.url))
         .map((img) => img.id);
     
+
+    //Para manter os videos que ja existem e nao foram removidos    
     const videoUrlsToAdd = videos.filter(
         (url) => !existingProject.videos.some((vid) => vid.url === url)
     );
