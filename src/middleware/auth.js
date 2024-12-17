@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'; //aqui eu importo o pacote JWT para verificar os
 
 
 //funçao para autenticar o token jwt
-export const authenticateToken = (req, res, next) => {
+export const authenticateToken = (requiredRole = "admin") => (req, res, next) => {
     const authHeader = req.headers.authorization; //essa linha vai obter o token do cabeçalho Authorization
 
 
@@ -28,6 +28,11 @@ export const authenticateToken = (req, res, next) => {
     try {
         // Verificar o token com a chave secreta
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        if(decoded.role !== requiredRole) {
+            return res.status(403).json({ message: "Acesso negado: permissão insuficiente." });
+        }
+
         req.user = decoded; // Adiciona os dados do token no objeto 'req'
         console.info(`[AUTH SUCCESS] Token válido. Usuário ID: ${decoded.id}, Endpoint: ${req.originalUrl}`);
         next(); // Passa para o próximo middleware ou handler
