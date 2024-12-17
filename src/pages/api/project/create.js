@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        authenticateToken(req, res, async () => {
+        authenticateToken("admin")(req, res, async () => {
             const { title, descripition, images, videos } = req.body;
             const project = await createProject(title, descripition, images, videos);
             res.status(201).json(project);
