@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        authenticateToken(req, res, async () => {
+        authenticateToken("admin")(req, res, async () => {
             const { id } = req.query;
             const deletedProject = await deleteProject(Number(id));
             res.status(200).json(deletedProject);
