@@ -15,8 +15,8 @@ export default async function handler(req, res) {
         const token = await loginUser(email, password);
         res.status(200).json({ token });
     } catch (err) {
-        console.error(`[LOGIN ERROR]: ${err.message}`)
-        res.status(401).json({ message: err.message })
+        console.error(`[LOGIN ERROR]: ${err.message}`) //log do erro
+        res.status(401).json({ message: err.message }) //resposta generica para o usuario
     }
 
 }
