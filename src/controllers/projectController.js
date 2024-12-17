@@ -13,8 +13,9 @@ const projectSchema = z.object({
 //funçao para adicionar novo projeto
 export const createProject = async (title, descripition, images = [], videos = []) => {
 
-    const validatedData = projectSchema.parse({ title, descripition, images, videos });
+    const validatedData = projectSchema.parse({ title, descripition, images, videos }); //valida os dados com o esquema zod
 
+    //cria o projeto no banco de dados
     const project = await prisma.project.create({
         data: {
             title: validatedData.title,
