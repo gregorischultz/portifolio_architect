@@ -1,17 +1,29 @@
 import prisma from "@/lib/prisma";
+import { z } from "zod";
+
+//definindo o esquema de validaçao para projetos 
+const projectSchema = z.object({
+    title: z.string().min(3, "O titulo deve ter pelo menos 3 caracteres"),
+    descripition: z.string().min(10, "A descriçao deve ter no minimo 10 caracteres"),
+    images: z.array(z.string().url("URL invalida para imagem")).optional(),
+    videos: z.array(z.string().url("URL invalida para video")).optional(),
+})
 
 
 //funçao para adicionar novo projeto
-export const createProject = async (title, descripition, images, videos) => {
+export const createProject = async (title, descripition, images = [], videos = []) => {
+
+    const validatedData = projectSchema.parse({ title, descripition, images, videos });
+
     const project = await prisma.project.create({
         data: {
-            title,
-            descripition,
+            title: validatedData.title,
+            descripition: validatedData.descripition,
             images: {
-                create: images.map((url) => ({ url })),
+                create: validatedData.images.map((url) => ({ url })),
             },
             videos: {
-                create: videos.map((url) => ({ url })),
+                create: validatedData.videos.map((url) => ({ url })),
             },
         },
         include: { images: true, videos: true },
@@ -39,7 +51,7 @@ export const updateProject = async (id, title, descripition, images, videos) => 
     const imageIdsToDelete = existingProject.images
         .filter((img) => !images.includes(img.url))
         .map((img) => img.id);
-    
+
 
     //Para manter os videos que ja existem e nao foram removidos    
     const videoUrlsToAdd = videos.filter(
