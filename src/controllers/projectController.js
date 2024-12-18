@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 import { z } from "zod";
 
-//definindo o esquema de validaçao para projetos 
+//definindo o esquema de validaçao para criaçao de projetos 
 const projectSchema = z.object({
     title: z.string().min(3, "O titulo deve ter pelo menos 3 caracteres"),
     descripition: z.string().min(10, "A descriçao deve ter no minimo 10 caracteres"),
