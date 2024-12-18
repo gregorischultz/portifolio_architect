@@ -1,11 +1,8 @@
 import { deleteProject } from "@/controllers/projectController";
 import { authenticateToken } from "@/middleware/auth";
-import { z } from "zod";
+import { deleteProjectSchema } from "@/schemasZod/projectSchemas"
 
-// Esquema de validação para o ID
-const deleteProjectSchema = z.object({
-    id: z.string().regex(/^\d+$/, "O ID deve ser um número válido").transform(Number),
-});
+
 
 export default async function handler(req, res) {
     if (req.method !== "DELETE") {
@@ -16,10 +13,10 @@ export default async function handler(req, res) {
     authenticateToken("admin")(req, res, async () => {
         try {
             // Validação do ID usando Zod
-            const { id } = deleteProjectSchema.parse(req.query);
+            const validatedData = deleteProjectSchema.parse(req.query);
 
             // Chama a função do controller para deletar o projeto
-            const deletedProject = await deleteProject(id); // Função no controller lida com o banco de dados
+            const deletedProject = await deleteProject(validatedData.id); // Função no controller lida com o banco de dados
 
             // Resposta de sucesso
             res.status(200).json({

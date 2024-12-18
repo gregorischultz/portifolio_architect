@@ -1,30 +1,22 @@
 import prisma from "@/lib/prisma";
-import { z } from "zod";
 
-//definindo o esquema de validaçao para criaçao de projetos 
-const projectSchema = z.object({
-    title: z.string().min(3, "O titulo deve ter pelo menos 3 caracteres"),
-    descripition: z.string().min(10, "A descriçao deve ter no minimo 10 caracteres"),
-    images: z.array(z.string().url("URL invalida para imagem")).optional(),
-    videos: z.array(z.string().url("URL invalida para video")).optional(),
-})
+
+
 
 
 //funçao para adicionar novo projeto
 export const createProject = async (title, descripition, images = [], videos = []) => {
 
-    const validatedData = projectSchema.parse({ title, descripition, images, videos }); //valida os dados com o esquema zod
-
     //cria o projeto no banco de dados
     const project = await prisma.project.create({
         data: {
-            title: validatedData.title,
-            descripition: validatedData.descripition,
+            title: title,
+            descripition: descripition,
             images: {
-                create: validatedData.images.map((url) => ({ url })),
+                create: images.map((url) => ({ url })),
             },
             videos: {
-                create: validatedData.videos.map((url) => ({ url })),
+                create: videos.map((url) => ({ url })),
             },
         },
         include: { images: true, videos: true },
