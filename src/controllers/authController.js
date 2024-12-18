@@ -49,6 +49,8 @@ export const loginUser = async (email, password) => {
     } catch (error) {
         if (error instanceof z.ZodError) {
             throw new Error(error.errors[0].message); // Retorna erro de validação amigável
+        } else if (error instanceof AuthError) {
+            throw new Error(error.message); //retorna erro de autenticaçao
         }
         throw new Error(error.message || "Erro ao fazer login.");
     }
