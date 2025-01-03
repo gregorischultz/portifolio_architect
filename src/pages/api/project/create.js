@@ -20,8 +20,10 @@ export default async function handler(req, res) {
                 validatedData.videos
             );
 
+            //Resposta de sucesso
             res.status(201).json({ message: "Projeto criado com sucesso", project });
         } catch (error) {
+            //Tratamento de erros, seja ele qual for
             if (error instanceof z.ZodError) {
                 res.status(400).json({ message: "Erro de validação", errors: error.errors });
             } else {
