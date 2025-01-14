@@ -17,6 +17,9 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0; /* Garante que não há margem no body */
+  padding: 0; /* Remove qualquer padding */
+
 }
 
 /*Reset basico para todos os elementos*/
@@ -31,3 +34,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.NavBar * {
+  margin: 0;
+  padding: 0;
+}
+
