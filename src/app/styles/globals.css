@@ -1,42 +1,33 @@
+
+/*variaveis globais para cores e fontes*/
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --font-primary:'Inter', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
+
+/*Estilos basicos para HTML e body*/
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  background-color: var(--background);
+  font-family: var(--font-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/*Reset basico para todos os elementos*/
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/*Ajuste de imagens*/
+img {
+  max-width: 100%;
+  height: auto;
 }
