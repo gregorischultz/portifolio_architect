@@ -9,7 +9,7 @@ export default function NavBar() {
                     <Link href="/project" className={styles.navItem} >
                         Projetos
                     </Link>
-                    <Link href="/serviços" className={styles.navItem} >
+                    <Link href="/servicos" className={styles.navItem} >
                         Serviços
                     </Link>
                     <Link href="/about" className={styles.navItem} >
