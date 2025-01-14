@@ -1,0 +1,119 @@
+/*Estilizaçao principal da barra de navegaçao*/
+.NavBar {
+    width: 100%;
+    padding: 32px 40px; /*espaçamento interno*/
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    display: flex;
+    justify-content: center; /*centraliza o contaiiner*/
+    align-items: center;
+    position: fixed; /*fixa a barra no topo*/
+    top: 0;
+    z-index: 100; /*garante que fique acima do outros elementos*/
+}
+
+/*Container central para os itens*/
+.container {
+    width: 100%; /* Garante que ocupe toda a largura */
+    max-width: none; /* Remove limites de largura máxima */
+    display: flex;
+    justify-content: space-between; /* Espaça os elementos para os cantos */
+    align-items: center;
+    padding: 0 20px; /* Espaçamento mínimo nas laterais */
+    box-sizing: border-box; /* Inclui padding na largura total */
+    position: relative; /* Permite posicionamento absoluto no logo */
+}
+
+/*menu a esquerda*/
+.menuLeft {
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+/*Estilo para cada link do menu esquerdo*/
+.navItem {
+    color: white;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: color 0.3s;
+}
+
+.navItem:hover {
+    color: #fc6c0f;
+}
+
+/*logo central*/
+.logo {
+    width: 173px;
+    height: 39px;
+    color: white;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto; /* Garante que o logo esteja centrado */
+    position: absolute; /* Para centralizar entre os menus */
+    left: 50%; /* Move para o meio da barra */
+    transform: translateX(-50%); /* Centraliza exatamente no meio */
+}
+
+/*Menu a direita*/
+.menuRight {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+/*Botao contato*/
+.contactButton {
+    width: 130px;
+    color: #fc6c0f;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid #fc6c0f ;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+.contactButton:hover{
+    background: #fc6c0f; /* Fundo laranja no hover */
+    color: white; /* Texto branco */
+}
+
+/* Responsividade para dispositivos menores */
+@media (max-width: 768px) {
+    .navbar {
+      padding: 16px 40px; /* Reduz o padding no mobile */
+    }
+  
+    .container {
+      flex-direction: column; /* Organiza os itens em coluna */
+      align-items: center;
+    }
+  
+    .menuLeft,
+    .menuRight {
+      justify-content: center;
+    }
+  
+    .logo {
+      margin: 16px 0; /* Adiciona espaço ao redor do logo */
+    }
+  }
+
+  .navItem, .contactButton {
+    line-height: 22px; /* Define o espaçamento vertical do texto */
+}
+
+.menuLeft > .navItem {
+    width: auto; /* Define largura automática para o texto */
+    text-align: center; /* Centraliza o texto dentro do link */
+}
