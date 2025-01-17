@@ -1,69 +1,78 @@
-/*Estilizaçao principal da barra de navegaçao*/
+/* Barra de navegação principal */
 .NavBar {
     width: 100%;
-    padding: 32px 40px; /*espaçamento interno*/
+    padding: 32px 40px; /* Mantém o espaçamento */
     background: linear-gradient(360deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
     display: flex;
-    justify-content: center; /*centraliza o contaiiner*/
+    justify-content: center; /* Centraliza a barra */
     align-items: center;
-    position: fixed; /*fixa a barra no topo*/
+    position: fixed;
     top: 0;
-    z-index: 100; /*garante que fique acima do outros elementos*/
+    z-index: 100;
 }
 
-/*Container central para os itens*/
+/* Container central da barra */
 .container {
-    width: 100%; /* Garante que ocupe toda a largura */
-    max-width: none; /* Remove limites de largura máxima */
+    width: 100%;
     display: flex;
-    justify-content: space-between; /* Espaça os elementos para os cantos */
+    justify-content: space-between; /* Mantém os menus nas extremidades */
     align-items: center;
-    padding: 0 20px; /* Espaçamento mínimo nas laterais */
-    box-sizing: border-box; /* Inclui padding na largura total */
-    position: relative; /* Permite posicionamento absoluto no logo */
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-/*menu a esquerda*/
+/* Menu à esquerda */
 .menuLeft {
     display: flex;
-    gap: 24px;
+    gap: 24px; /* Espaçamento entre os links */
     margin: 0;
     padding: 0;
-
 }
 
-
-/*Estilo para cada link do menu esquerdo*/
+/* Estilo para os links do menu */
 .navItem {
     color: white;
     font-size: 18px;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
-    text-decoration: none;
+    text-decoration: none; /* Remove o sublinhado padrão */
     padding: 8px 16px;
-    transition: color 0.3s;
+    position: relative;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .navItem:hover {
-    color: #fc6c0f;
+    color: #fc6c0f; /* Muda a cor no hover */
 }
 
-/*logo central*/
-.logo {
-    width: 173px;
-    height: 39px;
-    color: white;
+/* Linha de hover apenas na palavra */
+.navItem:hover::after {
+    content: ''; /* Cria a linha */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Alinha com o texto */
+    height: 2px; /* Espessura da linha */
+    background-color: #fc6c0f; /* Cor da linha */
+    transition: width 0.3s;
+}
+
+/* Logo central */
+.logo a {
+    text-decoration: none; /* Remove sublinhado */
+    color: white; /* Texto branco */
     font-size: 32px;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    text-align: center;
-    margin: 0 auto; /* Garante que o logo esteja centrado */
-    position: absolute; /* Para centralizar entre os menus */
-    left: 50%; /* Move para o meio da barra */
-    transform: translateX(-50%); /* Centraliza exatamente no meio */
 }
 
-/*Menu a direita*/
+.logo {
+    position: absolute; /* Para posicionar entre os menus */
+    left: 50%; /* Move para o centro */
+    transform: translateX(-50%); /* Ajusta para o meio exato */
+}
+
+/* Menu à direita */
 .menuRight {
     display: flex;
     justify-content: flex-end;
@@ -71,49 +80,84 @@
     padding: 0;
 }
 
-/*Botao contato*/
+/* Botão de contato */
 .contactButton {
     width: 130px;
-    color: #fc6c0f;
+    height: 50px; /* Ajusta a altura */
+    color: white; /* Texto branco */
     font-size: 18px;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
-    text-decoration: none;
-    border: 2px solid #fc6c0f ;
+    background: rgba(252, 108, 15, 0.7); /* Fundo laranja com transparência */
+    border: 2px ; /* Mantém borda laranja */
     border-radius: 8px;
     transition: all 0.3s;
 }
-.contactButton:hover{
-    background: #fc6c0f; /* Fundo laranja no hover */
-    color: white; /* Texto branco */
+
+.contactButton:hover {
+    background: rgba(252, 108, 15, 1); /* Fundo laranja sólido no hover */
+    color: white;
 }
 
-/* Responsividade para dispositivos menores */
+.burgerMenu{
+    display: none;
+}
+
+/* Menu hambúrguer no mobile */
 @media (max-width: 768px) {
-    .navbar {
-      padding: 16px 40px; /* Reduz o padding no mobile */
+    .menuLeft{
+        display: none;
     }
-  
-    .container {
-      flex-direction: column; /* Organiza os itens em coluna */
-      align-items: center;
-    }
-  
-    .menuLeft,
+
     .menuRight {
-      justify-content: center;
+        display: none; /* Esconde o botão no desktop */
     }
-  
+
+    .burgerMenu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 200;
+    }
+
+    .burgerMenu div {
+        width: 30px;
+        height: 3px;
+        background-color: white; /* Cor das linhas */
+        border-radius: 2px;
+        margin: 4px 0;
+        transition: all 0.3s;
+    }
+
+    /* Menu expansível */
+    .menuExpand {
+        display: flex !important; /* Força a exibição no mobile */
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border-radius: 8px;
+        padding: 16px;
+        z-index: 100;
+    }
+    .menuExpand.show {
+        display: flex; /* Mostra o menu quando ativado */
+    }
+
+    /* Botão no menu expansível */
+    .menuExpand .contactButton {
+        margin-top: 16px;
+    }
+
+    /* Logo no mobile */
     .logo {
-      margin: 16px 0; /* Adiciona espaço ao redor do logo */
+        position: static; /* Remove posicionamento absoluto */
+        margin: 0;
+        text-align: right; /* Move para a direita */
     }
-  }
-
-  .navItem, .contactButton {
-    line-height: 22px; /* Define o espaçamento vertical do texto */
 }
 
-.menuLeft > .navItem {
-    width: auto; /* Define largura automática para o texto */
-    text-align: center; /* Centraliza o texto dentro do link */
-}
