@@ -99,14 +99,27 @@
     color: white;
 }
 
+.burgerMenu{
+    display: none;
+}
+
 /* Menu hambúrguer no mobile */
 @media (max-width: 768px) {
+    .menuLeft{
+        display: none;
+    }
+
+    .menuRight {
+        display: none; /* Esconde o botão no desktop */
+    }
+
     .burgerMenu {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        z-index: 200;
     }
 
     .burgerMenu div {
@@ -120,16 +133,17 @@
 
     /* Menu expansível */
     .menuExpand {
-        display: none; /* Esconde o menu inicialmente */
+        display: flex !important; /* Força a exibição no mobile */
         flex-direction: column;
-        background: rgba(0, 0, 0, 0.8); /* Fundo escuro */
-        padding: 16px;
+        background: rgba(0, 0, 0, 0.8);
         position: absolute;
-        top: 50px;
+        top: 60px;
         right: 20px;
+        width: 200px;
         border-radius: 8px;
+        padding: 16px;
+        z-index: 100;
     }
-
     .menuExpand.show {
         display: flex; /* Mostra o menu quando ativado */
     }
@@ -146,3 +160,4 @@
         text-align: right; /* Move para a direita */
     }
 }
+
