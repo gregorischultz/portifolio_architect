@@ -1,7 +1,10 @@
+
 import Link from 'next/link';
-import styles from '../../styles/NavBar.module.css';
+import styles from '@/app/styles/NavBar.module.css';
 
 export default function NavBar() {
+    //const [menuOpen, setMenuOpen] = useState(false);
+
     return (
         <header className={styles.NavBar}>
             <div className={styles.container}>
