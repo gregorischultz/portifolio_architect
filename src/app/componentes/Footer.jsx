@@ -9,7 +9,7 @@ export default function Footer() {
                 <div className={styles.contactInfo}>
                     <div className={styles.contactItem}>
                         <Image
-                            src="/icons/phone-icon.svg"
+                            src="/whatsapp.png"
                             alt="Phone Icon"
                             width={20}
                             height={20}
@@ -19,7 +19,7 @@ export default function Footer() {
                     </div>
                     <div className={styles.contactItem}>
                         <Image
-                            src="/icons/email-icon.svg"
+                            src='/Mail.png'
                             alt="Email Icon"
                             width={20}
                             height={20}
