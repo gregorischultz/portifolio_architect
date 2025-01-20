@@ -1,20 +1,19 @@
 /*Configuraçao do layourt geral da pagina*/
 .page {
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  padding: 0;
-  gap: 64px;
-  font-family: var(--font-primary);
+  background: #ffffff;
 }
 
-/*estilo especifico para conteudo principal*/
 .main {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 32px;
+  padding-top: 120px; /* Adiciona espaço equivalente à altura da NavBar */
+  justify-content: center;
+  align-items: center;
 }
 
 /*Responsividade para telas menores*/
