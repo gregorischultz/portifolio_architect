@@ -15,11 +15,11 @@ export default function NavBar() {
                     <div></div>
                 </div>
                 <nav className={`${styles.menuLeft} ${menuOpen ? styles.menuExpand : ''}`}>
+                    <Link href="/" className={styles.navItem} >
+                        Inicio
+                    </Link>
                     <Link href="/project" className={styles.navItem} >
                         Projetos
-                    </Link>
-                    <Link href="/servicos" className={styles.navItem} >
-                        Serviços
                     </Link>
                     <Link href="/about" className={styles.navItem} >
                         Sobre
