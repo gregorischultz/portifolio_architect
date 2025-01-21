@@ -3,6 +3,7 @@ import NavBar from "./componentes/NavBar";
 import Footer from "./componentes/Footer";
 import Hero from "./componentes/HomePage/Hero";
 import Services from "./componentes/HomePage/Services";
+import Process from "./componentes/HomePage/Process";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <NavBar />
       <Hero />
       <Services />
+      <Process />
       <Footer />
     </div>
 
