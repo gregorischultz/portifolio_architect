@@ -43,7 +43,12 @@ export default function FAQ() {
                         <div className={`${styles.question} ${openQuestion === index ? styles.active : ""}`}
                             onClick={() => toggleQuestion(index)}>
                             <span>{item.question}</span>
-                            <div className={`${styles.arrow} ${openQuestion === index ? styles.rotate : ""}`}></div>
+                            <img
+                                src="/arrow.png" // Caminho da imagem da seta
+                                alt="Seta para expandir"
+                                className={`${styles.arrow} ${openQuestion === index ? styles.rotate : ""
+                                    }`} // Aplica rotação na imagem quando a pergunta está aberta
+                            />
                         </div>
                         {openQuestion === index && (
                             <div className={styles.answer}>{item.answer}</div>

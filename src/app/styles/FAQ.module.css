@@ -65,34 +65,11 @@
 .arrow {
     width: 24px;
     height: 24px;
-    position: relative;
-    border: 2px solid #a1a1aa;
-    transform: rotate(0deg);
     transition: 0.3s;
 }
 
-.arrow::before,
-.arrow::after {
-    content: "";
-    position: absolute;
-    background-color: #a1a1aa;
-}
-
-.arrow::before {
-    width: 14px;
-    height: 2px;
-    top: 11px;
-    left: 5px;
-}
-
-.arrow::after {
-    width: 2px;
-    height: 14px;
-    top: 5px;
-    left: 11px;
-}
 
 /*Gira a seta para baixo quando a pergunta esta aberta*/
 .rotate {
-    transform: rotate(45deg);
+    transform: rotate(90deg);
 }
