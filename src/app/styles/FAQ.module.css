@@ -1,0 +1,75 @@
+/*Container principal*/
+.container {
+    width: 100%;
+    padding: 24px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/*Titulo do FAQ*/
+.title {
+    font-size: 60px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 800;
+    line-height: 68px;
+    color: black;
+}
+
+/*Lista de perguntas e respostas*/
+.faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/*Estilo de cada pergunta*/
+.faqItem {
+    border-bottom: 1px solid rgba(17, 17, 17, 0.15);
+    padding-bottom: 16px;
+}
+
+/*Cabeçalho de cada pergunta*/
+.question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #11181c;
+    transition: color 0.3s;
+}
+
+.question:hover {
+    color: #fc6c0f;
+}
+
+/*Classe para pergunta aberta*/
+.active {
+    color: #fc6c0f;
+}
+
+/*Resposta*/
+.answer {
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #11181c;
+    margin-top: 16px;
+}
+
+/*Estilo da seta*/
+.arrow {
+    width: 24px;
+    height: 24px;
+    transition: 0.3s;
+}
+
+
+/*Gira a seta para baixo quando a pergunta esta aberta*/
+.rotate {
+    transform: rotate(90deg);
+}

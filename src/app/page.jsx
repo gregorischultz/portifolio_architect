@@ -4,6 +4,7 @@ import Footer from "./componentes/Footer";
 import Hero from "./componentes/HomePage/Hero";
 import Services from "./componentes/HomePage/Services";
 import Process from "./componentes/HomePage/Process";
+import FAQ from "./componentes/HomePage/FAQ";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Services />
       <Process />
+      <FAQ />
       <Footer />
     </div>
 
