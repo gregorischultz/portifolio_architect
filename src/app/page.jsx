@@ -5,6 +5,7 @@ import Hero from "./componentes/HomePage/Hero";
 import Services from "./componentes/HomePage/Services";
 import Process from "./componentes/HomePage/Process";
 import FAQ from "./componentes/HomePage/FAQ";
+import Contato from "./componentes/Contato";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Services />
       <Process />
       <FAQ />
+      <Contato />
       <Footer />
     </div>
 
