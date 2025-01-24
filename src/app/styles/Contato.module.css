@@ -1,0 +1,101 @@
+.contactSection {
+    width: 100%;
+    padding: 24px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: #fff;
+}
+
+.header h1 {
+    font-size: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    line-height: 68px;
+    color: #11181c;
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    gap: 52px;
+}
+
+.description {
+    flex: 1.2;
+}
+
+.description p {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    line-height: 24px;
+    color: #11181c;
+}
+
+.form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+    width: 100%;
+    padding-right: 40px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formGroup label {
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 26px;
+    color: #52525b;
+}
+
+.formGroup input,
+.formGroup textarea {
+    padding: 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 24px;
+    color: #71717a;
+    background: #f4f4f5;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    resize: none;
+}
+
+.formGroup textarea {
+    height: 150px;
+}
+
+.submitContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submitButton {
+    width: 113px;
+    height: 40px;
+    background: rgba(252, 108, 15, 0.2);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+    color: #fc6c0f;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background: rgba(252, 108, 15, 0.4);
+}

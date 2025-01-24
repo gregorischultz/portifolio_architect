@@ -8,7 +8,7 @@ export default function Contato() {
             </div>
             <div className={styles.content}>
                 <div className={styles.description}>
-                    <p>Pronto para dar vida ao seu projeto? Estamos aqui para ajudar! Entre
+                    <p>Pronto para dar vida ao seu projeto? Estamos aqui para ajudar!<br/> Entre
                         em contato e descubra como podemos transformar a sua visão em
                         realidade.<br />
                         Ou preencha o formulário, e entraremos em contato rapidamente!
@@ -41,9 +41,11 @@ export default function Contato() {
                             placeholder='Digite sua mensagem'
                         ></textarea>
                     </div>
-                    <button type='submit' className={styles.submitButton}>
-                        Enviar
-                    </button>
+                    <div className={styles.submitContainer}>
+                        <button type="submit" className={styles.submitButton}>
+                            Enviar
+                        </button>
+                    </div>
                 </form>
             </div>
         </section>
