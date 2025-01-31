@@ -9,25 +9,25 @@ export default function Process() {
             numberImg: '/1..png',
             title: 'Exploração e Briefing',
             description:
-                'Partilhe connosco as suas ideias, objectivos e expectativas. A nossa equipa estará atenta a cada detalhe para compreender a sua visão.',
+                'Partilhe connosco as suas ideias, objetivos e expectativas. A nossa equipa estará atenta a cada detalhe para compreender a sua visão.',
         },
         {
             numberImg: '/2.png',
             title: 'Concepção e Modelação 3D',
             description:
-                'Com base no briefing, desenvolvemos modelos 3D detalhados e precisos, assegurando que todos os aspectos do projecto estão fielmente representados.',
+                'Com base no briefing, desenvolvemos modelos 3D detalhados e precisos, assegurando que todos os aspectos do projecto estarão fielmente representados.',
         },
         {
             numberImg: '/3.png',
             title: 'Renderização de Alta Qualidade',
             description:
-                'Criamos imagens foto-realistas que dão vida ao projecto, capturando a essência e o impacto que deseja transmitir.',
+                'Criamos imagens e vídeos realistas que dão vida ao projecto, capturando a essência e o impacto que deseja transmitir.',
         },
         {
             numberImg: '/4.png',
             title: 'Revisões e Ajustes Personalizados',
             description:
-                'Valorizamos o seu feedback e ajustamos os detalhes para garantir que o resultado final corresponde exactamente ao que idealizou.',
+                'Valorizamos o seu feedback e ajustamos os detalhes para garantir que o resultado final corresponda exatamente ao que foi idealizado.',
         },
         {
             numberImg: '/5.png',
@@ -40,7 +40,7 @@ export default function Process() {
     return (
         <section className={styles.process}>
             <h2 className={styles.title}>Nosso Processo</h2>
-            <p className={styles.description}>O nosso processo é desenhado para ser eficiente, claro e centrado no cliente, garantindo uma experiência fluida e resultados extraordinários.</p>
+            <p className={styles.description}>Cada renderização é mais do que uma imagem, é uma experiência visual que comunica, convence, encanta e desperta a imaginação.</p>
             <div className={styles.cards}>
                 {cards.map((card, index) => (
                     <ProcessCard
