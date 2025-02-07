@@ -1,10 +1,35 @@
 // components/Footer.js
+"use client";
 import styles from '@/app/styles/Footer.module.css';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Footer() {
+    const [clickCount, setClickCount] = useState(0);
+    const [showLogin, setShowLogin] = useState(false);
+    const [isMounted, setIsmounted] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        setIsmounted(true);
+    }, []);
+
+    const handleSecretClick = () => {
+        setClickCount((prev) => + 1);
+
+        if (clickCount + 1 === 4) { //se clicar 4 vezes mostra o botao
+            setShowLogin(true);
+        }
+    };
+
+    const handleLoginClick = () => {
+        router.push("/adm/login"); // redireciona para a pagina de login
+    }
+
+
     return (
-        <footer className={styles.footer}>
+        <footer className={styles.footer} onClick={handleSecretClick}>
             <div className={styles.footerContent}>
                 <div className={styles.contactInfo}>
                     <div className={styles.contactItem}>
@@ -35,6 +60,12 @@ export default function Footer() {
                     <p>2025 Imaginarq All rights reserved. Built by Grégori SCHULTZ</p>
                 </div>
             </div>
+
+            {showLogin && (
+                <button className={styles.loginButton} onClick={handleLoginClick} >
+                    Login
+                </button>
+            )}
         </footer>
     );
 }
