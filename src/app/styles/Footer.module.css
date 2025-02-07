@@ -8,6 +8,8 @@
     justify-content: center;
     align-items: center;
     gap: 32px;
+    position: relative;
+    cursor: pointer;
   }
   
   .footerContent {
@@ -52,5 +54,19 @@
     font-size: 16px;
     color: #000;
     line-height: 1.5;
+  }
+
+  /*estilo para o botao secreto*/
+  .loginButton {
+    background-color: #FC6C0F;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
   }
   
