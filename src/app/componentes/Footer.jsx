@@ -16,15 +16,18 @@ export default function Footer() {
     }, []);
 
     const handleSecretClick = () => {
-        setClickCount((prev) => + 1);
+        setClickCount((prev) => prev + 1);
 
         if (clickCount + 1 === 4) { //se clicar 4 vezes mostra o botao
             setShowLogin(true);
+            setClickCount(0);
         }
     };
 
     const handleLoginClick = () => {
-        router.push("/adm/login"); // redireciona para a pagina de login
+        if (isMounted) {
+            router.push("/adm/login");
+        } // redireciona para a pagina de login
     }
 
 
