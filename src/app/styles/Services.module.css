@@ -6,63 +6,93 @@
   }
   
   .title {
+    width: 100%;
+    color: black;
     font-size: 60px;
     font-weight: 800;
-    color: black;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 68px;
+    text-transform: capitalize;
   }
   
-  .cards {
-    display: flex;
-    gap: 82px;
-  }
-  
-  .card {
-    flex: 1;
+  .sliderWrapper {
+    width: 100%;
+    height: 560px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    align-items: center;
+    gap: 24px;
   }
   
-  .image {
-    height: 261px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
+  .slider {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 480px;
   }
   
-  .cardTitle {
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
+  .slideImageWrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 40px;
+    background: white;
   }
   
-  .cardDescription {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 26px;
-    text-align: justify;
+  .slideImage {
+    object-fit: cover;
   }
   
-  .viewAll {
+  .servicesGrid {
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    gap: 82px;
+    flex-wrap: wrap;
+  }
+  
+  .serviceCard {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-top: 40px;
+    gap: 16px;
+    max-width: 372px;
+  }
+  
+  .serviceTitle {
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-size: 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+  }
+  
+  .serviceDescription {
+    width: 100%;
+    text-align: justify;
+    color: black;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    line-height: 26px;
   }
   
   .button {
-    color: #fc6c0f;
-    font-size: 18px;
-    font-weight: 700;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    display: flex;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 8px;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-  }
-  
-  .arrow {
-    font-size: 20px;
+    color: #FC6C0F;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
   

@@ -12,6 +12,7 @@
     "@prisma/client": "^6.0.1",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
+    "keen-slider": "^6.8.6",
     "next": "15.0.4",
     "prisma": "^6.0.1",
     "react": "^19.0.0",

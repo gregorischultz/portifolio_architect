@@ -1,45 +1,72 @@
-// components/Services.jsx
-import styles from '@/app/styles/Services.module.css';
+'use client';
 
-export default function Services() {
+import Image from 'next/image';
+import { useKeenSlider } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
+import styles from '../../styles/Services.module.css';
+
+// Instalar com: npm install keen-slider ou yarn add keen-slider
+
+export default function ServicosSection() {
+  const [sliderRef] = useKeenSlider({
+    loop: true,
+    slides: { perView: 1 },
+    autoplay: true,
+    duration: 3000,
+  });
+
   return (
-    <section className={styles.services}>
+    <section className={styles.section}>
       <h2 className={styles.title}>Nossos serviços</h2>
-      <div className={styles.cards}>
-        {/* Card 1 */}
-        <div className={styles.card}>
-          <div
-            className={styles.image}
-            style={{ backgroundImage: "url('/path/to/modelacao3d.jpg')" }}
-          />
-          <h3 className={styles.cardTitle}>Modelação 3D</h3>
-          <p className={styles.cardDescription}>
-            Transformamos planos e ideias em modelos digitais detalhados e fiáveis, perfeitos para visualização e apresentação.
-          </p>
-        </div>
-        {/* Card 2 */}
-        <div className={styles.card}>
-          <div className={styles.image} style={{ background: '#D9D9D9' }} />
-          <h3 className={styles.cardTitle}>Renderizações Foto-Realistas</h3>
-          <p className={styles.cardDescription}>
-            Criamos imagens de alta qualidade que mostram com precisão como será o seu projecto, antes mesmo de ser construído.
-          </p>
-        </div>
-        {/* Card 3 */}
-        <div className={styles.card}>
-          <div className={styles.image} style={{ background: '#D9D9D9' }} />
-          <h3 className={styles.cardTitle}>Panorâmicas VR 360°</h3>
-          <p className={styles.cardDescription}>
-            Proporcionamos experiências imersivas que permitem explorar projectos como se já estivessem prontos.
-          </p>
+
+      <div className={styles.sliderWrapper}>
+        <div ref={sliderRef} className={`keen-slider ${styles.slider}`}>
+          {[780, 620, 460, 460, 620].map((w, idx) => (
+            <div key={idx} className="keen-slider__slide">
+              <div
+                className={styles.slideImageWrapper}
+                style={{ width: w, height: (w * 480) / 780 }}
+              >
+                <Image
+                  src={`https://placehold.co/${w}x${(w * 480) / 780}`}
+                  alt={`Slide ${idx + 1}`}
+                  fill
+                  className={styles.slideImage}
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-      {/* Botão */}
-      <div className={styles.viewAll}>
-        <button className={styles.button}>
-          Ver todos os projectos <span className={styles.arrow}>→</span>
-        </button>
+
+      <div className={styles.servicesGrid}>
+        {[
+          {
+            title: 'Modelação 3D',
+            desc: 'Transformamos plantas e ideias em modelos digitais detalhados e fiáveis, perfeitos para visualização e estudo.',
+          },
+          {
+            title: 'Renderizações Realistas',
+            desc: 'Criamos imagens e videos de alta qualidade que mostram com precisão como será o seu projecto, antes mesmo de ser construído.',
+          },
+          {
+            title: 'Festivais & Eventos',
+            desc: 'Idealizamos conceitos em representações realistas para festas e eventos, permitindo uma análise detalhada antes da execução.',
+          },
+        ].map((item, idx) => (
+          <article key={idx} className={styles.serviceCard}>
+            <h3 className={styles.serviceTitle}>{item.title}</h3>
+            <p className={styles.serviceDescription}>{item.desc}</p>
+          </article>
+        ))}
       </div>
+
+      <button className={styles.button}>
+        Ver todos os projectos
+        <svg width="20" height="20" viewBox="0 0 12 12" fill="none">
+          <path d="M4 2L8 6L4 10" stroke="#FC6C0F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
     </section>
   );
 }
