@@ -5,7 +5,7 @@ import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import styles from '../../styles/Services.module.css';
 
-// Instalar com: npm install keen-slider ou yarn add keen-slider
+
 
 export default function ServicosSection() {
   const [sliderRef] = useKeenSlider({
@@ -16,7 +16,7 @@ export default function ServicosSection() {
   });
 
   return (
-    <section className={styles.section}>
+    <section className={styles.services}>
       <h2 className={styles.title}>Nossos serviços</h2>
 
       <div className={styles.sliderWrapper}>
