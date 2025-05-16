@@ -4,25 +4,34 @@ import Image from 'next/image';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import styles from '../../styles/Services.module.css';
+import { useState, useEffect } from 'react';
 
 
 
 export default function ServicosSection() {
-  const [sliderRef] = useKeenSlider({
+  const [currentSlider, setCurrentSlider] = useState(0);
+
+  const [sliderRef, slider] = useKeenSlider({
     loop: true,
-    slides: { perView: 1 },
-    autoplay: true,
-    duration: 3000,
+    slides: { perView: 1, spacing: 24, },
+    sliderChanged(s) {
+      setCurrentSlider(s.track.details.rel);
+    },
+    centered: true,
   });
 
   return (
     <section className={styles.services}>
       <h2 className={styles.title}>Nossos serviços</h2>
-
+      {/* Carrossel de imagens */}
       <div className={styles.sliderWrapper}>
         <div ref={sliderRef} className={`keen-slider ${styles.slider}`}>
           {[780, 620, 460, 460, 620].map((w, idx) => (
-            <div key={idx} className="keen-slider__slide">
+            <div
+              key={idx}
+              className={`keen-slider__slide ${idx === currentSlider ? styles.activeSlide : styles.inactiveSlide
+                }`}
+            >
               <div
                 className={styles.slideImageWrapper}
                 style={{ width: w, height: (w * 480) / 780 }}
@@ -61,12 +70,15 @@ export default function ServicosSection() {
         ))}
       </div>
 
-      <button className={styles.button}>
-        Ver todos os projectos
-        <svg width="20" height="20" viewBox="0 0 12 12" fill="none">
-          <path d="M4 2L8 6L4 10" stroke="#FC6C0F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-    </section>
+      {/* Botão alinhado à direita */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <button className={styles.button}>
+          Ver todos os projectos
+          <svg width="20" height="20" viewBox="0 0 12 12" fill="none">
+            <path d="M4 2L8 6L4 10" stroke="#FC6C0F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </section >
   );
 }

@@ -95,4 +95,17 @@
     border: none;
     cursor: pointer;
   }
+
+  .activeSlide {
+    transform: scale(1.05);
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .inactiveSlide {
+    transform: scale(0.9);
+    opacity: 0.5;
+    transition: all 0.3s ease-in-out;
+  }
+  
   
