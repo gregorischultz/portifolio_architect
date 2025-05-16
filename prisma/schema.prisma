@@ -18,6 +18,7 @@ model User {
   email     String   @unique
   password  String
   role     String @default("client")
+  project   Project[]
 }
 
 model Project {
@@ -27,6 +28,8 @@ model Project {
   createdAt   DateTime @default(now())
   images      Image[]  // Relacionamento 1:N com a tabela Image
   videos      Video[]  // Relacionamento 1:N com a tabela Video
+  userId      Int
+  user        User @relation(fields: [userId], references: [id])
 }
 
 model Image {
