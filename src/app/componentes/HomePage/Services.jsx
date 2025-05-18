@@ -26,7 +26,7 @@ export default function ServicosSection() {
       {/* Carrossel de imagens */}
       <div className={styles.sliderWrapper}>
         <div ref={sliderRef} className={`keen-slider ${styles.slider}`}>
-          {[780, 620, 460, 460, 620].map((w, idx) => (
+          {[780, 780, 780, 780, 780].map((w, idx) => (
             <div
               key={idx}
               className={`keen-slider__slide ${idx === currentSlider ? styles.activeSlide : styles.inactiveSlide
