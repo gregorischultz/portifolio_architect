@@ -13,25 +13,27 @@ const steps = [
 
 export default function Process() {
     return (
-<section className={styles.container}>
-      <h2 className={styles.title}>Nosso Processo</h2>
-      <div className={styles.gridWrapper}>
-        <div className={styles.cardText}>
-          <p>
-            Cada renderização é mais do que uma imagem, é uma experiência visual
-            que comunica, convence, encanta e desperta a <span className={styles.highlight}>imaginação</span>.
-          </p>
-        </div>
-        {steps.map(({ number, title, subtitle }) => (
-          <div className={styles.card} key={number}>
-            <span className={styles.number}>{number}</span>
-            <div className={styles.text}>
-              <span>{title}</span>
-              <span>{subtitle}</span>
+        <section className={styles.container}>
+            <h2 className={styles.title}>Nosso Processo</h2>
+            <div className={styles.gridWrapper}>
+                <div className={styles.cardText}>
+                    <p>
+                        Cada renderização é mais do que uma imagem, é uma experiência visual
+                        que comunica, convence, encanta e desperta a <span className={styles.highlight}>imaginação</span>.
+                    </p>
+                </div>
+                {steps.map(({ number, title, subtitle }) => (
+                    <div className={styles.card} key={number}>
+                        <div className={styles.numberWrapper}>
+                            <span className={styles.number}>{number}</span>
+                        </div>
+                        <div className={styles.text}>
+                            <span>{title}</span>
+                            <span>{subtitle}</span>
+                        </div>
+                    </div>
+                ))}
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+        </section>
     )
 }
