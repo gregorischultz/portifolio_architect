@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import styles from "";
+import styles from "@/app/styles/Login.module.css";
 
 export default function Login() {
     //Estados para armazenar email, senha e possiveis erros de login

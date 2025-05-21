@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import styles from "";
+import styles from "@/app/styles/ADMpage.module.css";
 
 
 
@@ -38,9 +38,18 @@ export default function AdminPage() {
         fetchProjects();
     }, []);
 
+    const handleAddProject = () => {
+        router.push("/adm/Addproject");
+    };
+
     return (
-        <div className={styles.contaner}>
+        <div className={styles.container}>
             <h2>Painel Administrativo</h2>
+
+            <button className={styles.addButton} onClick={handleAddProject}>
+                ➕ Adicionar Projeto
+            </button>
+
             {loading && <p>Carregando...</p>}
             {error && <p className={styles.error} >{error}</p>}
             <ul className={styles.list} >

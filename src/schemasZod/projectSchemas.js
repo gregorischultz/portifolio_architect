@@ -13,7 +13,7 @@ export const updateProjectSchema = z.object({
 //definindo o esquema de validaçao para criaçao de projetos 
 export const createProjectSchema = z.object({
     title: z.string().min(3, "O titulo deve ter pelo menos 3 caracteres"),
-    descripition: z.string().min(10, "A descriçao deve ter no minimo 10 caracteres"),
+    description: z.string().min(10, "A descriçao deve ter no minimo 10 caracteres"),
     images: z.array(z.string().url("URL invalida para imagem")).optional(),
     videos: z.array(z.string().url("URL invalida para video")).optional(),
 })
