@@ -15,7 +15,7 @@ export default async function handler(req, res) {
             // Criação do projeto
             const project = await createProject(
                 validatedData.title,
-                validatedData.descripition,
+                validatedData.description,
                 validatedData.images,
                 validatedData.videos
             );

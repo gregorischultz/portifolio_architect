@@ -1,0 +1,28 @@
+.container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .addButton {
+    background-color: #4caf50;
+    color: white;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+  .list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .projectItem {
+    padding: 0.8rem;
+    background: #f9f9f9;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+  }
+  
