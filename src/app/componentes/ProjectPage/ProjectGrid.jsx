@@ -1,5 +1,5 @@
 import ProjectCard from './ProjectCard';
-import styles from '';
+import styles from '@/app/styles/ProjectGrid.module.css'
 
 export default function ProjectGrid({ projects }) {
   return (

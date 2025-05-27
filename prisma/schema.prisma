@@ -25,6 +25,7 @@ model Project {
   id          Int      @id @default(autoincrement())
   title       String
   description String
+  category    String
   createdAt   DateTime @default(now())
   images      Image[]  // Relacionamento 1:N com a tabela Image
   videos      Video[]  // Relacionamento 1:N com a tabela Video
