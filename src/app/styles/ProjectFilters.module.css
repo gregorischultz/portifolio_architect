@@ -1,0 +1,22 @@
+.filters {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 2rem;
+}
+
+.button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-family: Montserrat, sans-serif;
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    border-bottom: 2px solid transparent;
+}
+
+.active {
+    border-bottom: 2px solid #FC6C0F;
+    color: #FC6C0F;
+    font-weight: 700;
+    
+}

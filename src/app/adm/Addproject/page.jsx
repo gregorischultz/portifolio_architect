@@ -36,6 +36,7 @@ export default function AdicionarProjetoPage() {
         body: JSON.stringify({
           title,
           description,
+          category,
           images: imageUrls.filter((url) => url.trim() !== ""),
         }),
       });
@@ -70,6 +71,19 @@ export default function AdicionarProjetoPage() {
           onChange={(e) => setDescription(e.target.value)}
           required
         />
+
+        <label>Categoria</label>
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          required
+        >
+          <option value="">Selecione uma categoria</option>
+          <option value="3D exteriores">3D exteriores</option>
+          <option value="3D interiores">3D interiores</option>
+          <option value="3D Comerciais">3D Comerciais</option>
+        </select>
+
 
         <label>Imagens (URLs)</label>
         {imageUrls.map((url, index) => (

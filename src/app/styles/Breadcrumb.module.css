@@ -1,0 +1,16 @@
+.breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    color: black;
+    padding: 1rem 0;
+}
+
+.separator {
+    color: gray;
+}
+
+.active {
+    font-weight: 700;
+}

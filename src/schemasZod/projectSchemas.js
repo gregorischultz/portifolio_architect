@@ -14,6 +14,7 @@ export const updateProjectSchema = z.object({
 export const createProjectSchema = z.object({
     title: z.string().min(3, "O titulo deve ter pelo menos 3 caracteres"),
     description: z.string().min(10, "A descriçao deve ter no minimo 10 caracteres"),
+    category: z.string().min(1),
     images: z.array(z.string().url("URL invalida para imagem")).optional(),
     videos: z.array(z.string().url("URL invalida para video")).optional(),
 })
