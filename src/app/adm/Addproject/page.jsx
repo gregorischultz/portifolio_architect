@@ -6,18 +6,14 @@ import { useRouter } from "next/navigation";
 export default function AdicionarProjetoPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [imageUrls, setImageUrls] = useState([""]);
+  const [category, setCategory] = useState("");
+  const [mediaFiles, setMediaFiles] = useState([]); // arquivos locais
   const [error, setError] = useState("");
+
   const router = useRouter();
 
-  const handleImageChange = (index, value) => {
-    const updated = [...imageUrls];
-    updated[index] = value;
-    setImageUrls(updated);
-  };
-
-  const handleAddImageField = () => {
-    setImageUrls([...imageUrls, ""]);
+  const handleFileChange = (e) => {
+    setMediaFiles(Array.from(e.target.files));
   };
 
   const handleSubmit = async (e) => {
@@ -25,25 +21,28 @@ export default function AdicionarProjetoPage() {
     setError("");
 
     const token = localStorage.getItem("token");
+    const formData = new FormData();
+
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("category", category);
+
+    mediaFiles.forEach((file) => {
+      formData.append("media", file); // mesmo campo para imagens e vídeos
+    });
 
     try {
       const res = await fetch("/api/project/create", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          title,
-          description,
-          category,
-          images: imageUrls.filter((url) => url.trim() !== ""),
-        }),
+        body: formData,
       });
 
       if (!res.ok) {
         const data = await res.json();
-        throw new Error(data.error || "Erro ao criar o projeto");
+        throw new Error(data.message || "Erro ao criar projeto");
       }
 
       alert("✅ Projeto criado com sucesso!");
@@ -56,7 +55,7 @@ export default function AdicionarProjetoPage() {
   return (
     <main style={{ maxWidth: "600px", margin: "0 auto", padding: "2rem" }}>
       <h1>Adicionar Projeto</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label>Título</label>
         <input
           type="text"
@@ -84,26 +83,13 @@ export default function AdicionarProjetoPage() {
           <option value="3D Comerciais">3D Comerciais</option>
         </select>
 
-
-        <label>Imagens (URLs)</label>
-        {imageUrls.map((url, index) => (
-          <input
-            key={index}
-            type="url"
-            placeholder="https://exemplo.com/imagem.jpg"
-            value={url}
-            onChange={(e) => handleImageChange(index, e.target.value)}
-            required
-          />
-        ))}
-
-        <button
-          type="button"
-          onClick={handleAddImageField}
-          style={{ marginTop: "0.5rem" }}
-        >
-          ➕ Adicionar outra imagem
-        </button>
+        <label>Imagens e vídeos (do computador)</label>
+        <input
+          type="file"
+          accept="image/*,video/*"
+          multiple
+          onChange={handleFileChange}
+        />
 
         <br />
         <br />
