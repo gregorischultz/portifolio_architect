@@ -1,10 +1,10 @@
-const formidable = require("formidable");
+const { IncomingForm } = require("formidable");
 
 function parseForm(req) {
-  const form = formidable({
+  const form = new IncomingForm({
     multiples: true,
     keepExtensions: true,
-    uploadDir: "./public/uploads", // certifique-se de que essa pasta existe
+    uploadDir: "./public/uploads",
   });
 
   return new Promise((resolve, reject) => {

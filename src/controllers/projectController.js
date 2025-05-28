@@ -5,7 +5,7 @@ import prisma from "@/lib/prisma";
 
 
 //funçao para adicionar novo projeto
-export const createProject = async (title, description, category, images = [], videos = []) => { // ✅ Corrigido: 'descripition' → 'description'
+export const createProject = async (title, description, category, images = [], videos = [], userId) => { // ✅ Corrigido: 'descripition' → 'description'
 
     // cria o projeto no banco de dados
     const project = await prisma.project.create({
@@ -19,6 +19,9 @@ export const createProject = async (title, description, category, images = [], v
             videos: {
                 create: videos.map((url) => ({ url })),
             },
+            user: {
+                connect: { id: userId }, // ✅ Conecta com o usuário autenticado
+              },
         },
         include: { images: true, videos: true },
     });

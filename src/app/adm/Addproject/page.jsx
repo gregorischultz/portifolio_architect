@@ -20,9 +20,8 @@ export default function AdicionarProjetoPage() {
     e.preventDefault();
     setError("");
 
-    const token = localStorage.getItem("token");
+    
     const formData = new FormData();
-
     formData.append("title", title);
     formData.append("description", description);
     formData.append("category", category);
@@ -34,10 +33,8 @@ export default function AdicionarProjetoPage() {
     try {
       const res = await fetch("/api/project/create", {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
         body: formData,
+        credentials: "include", // envia o cookie JWT
       });
 
       if (!res.ok) {
