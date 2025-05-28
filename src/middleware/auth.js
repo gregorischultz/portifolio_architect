@@ -3,32 +3,26 @@ import jwt from 'jsonwebtoken'; //Ici, on importe la bibliotheque 'jsonwebtoken'
 
 //On definit une fontion middleware appeleé 'authenticateToken'
 export const authenticateToken = (requiredRole = "admin") => (req, res, next) => { //Elle prend un role requis (par defaut "admin") et retourne une fonction qui reçois les objets req, res et next
-    const authHeader = req.headers.authorization; //On recupere l'en-tete "authorization" de la requete HTTP
+    const authHeader = req.headers.authorization;
+    const cookieToken = req.cookies?.token;
+    const token = cookieToken || (authHeader && authHeader.split(' ')[1]); // ✅ PRIORIDADE PARA COOKIE
 
-
-    //Si l'en-tete authorization est absent
-    //On affiche une erreur dans les logs et on renvoie une reponse 401 (non autorisé) avec un message d'erreur
-    if (!authHeader) {
+    if (!token) {
         console.error(`[AUTH ERROR] Token não fornecido. IP: ${req.ip}, Endpoint: ${req.originalUrl}`);
         return res.status(401).json({
-            message: 'Token nao fornecido',
-            error: 'Cabeçalho Authorization ausente'
-        }); 
-    };
-
-    
-    //On extrait le token JWT
-    //L'en-tete est generalement sous la forme "Bearer <token>", donc on divise par l'espace et on prend la 2e partie
-    const token = authHeader.split(' ')[1]; 
+            message: 'Token não fornecido',
+            error: 'Token ausente no cookie e no cabeçalho Authorization'
+        });
+    }
 
 
     //Si le token n'est pas trouvé (ou mal formaté), on renvoie une erreur 401 avec un message expliquant le format attendu
-    if (!token) { 
+    if (!token) {
         console.error(`[AUTH ERROR] Token ausente ou inválido no cabeçalho. IP: ${req.ip}, Endpoint: ${req.originalUrl}`);
         return res.status(401).json({
             message: 'Token inválido',
             error: 'Formato do token inválido (esperado: Bearer <token>)'
-        }); 
+        });
     };
 
 
@@ -41,18 +35,18 @@ export const authenticateToken = (requiredRole = "admin") => (req, res, next) =>
 
         //On verifie si le role de l'utilisateur dans le token correspond au role requis
         //Sinon, on renvoie une erreur 403 (interdit) pour indiquer un manque de permission
-        if(decoded.role !== requiredRole) {
+        if (decoded.role !== requiredRole) {
             return res.status(403).json({ message: "Acesso negado: permissão insuficiente." });
         }
 
 
         //Si tout est correct, on ajoute les infos de l'utilisateur (decodeés du token) a l'objet req
         //Puis on passe au liddleware suivante frace a la fonction "next()"
-        req.user = decoded; 
+        req.user = decoded;
         console.info(`[AUTH SUCCESS] Token válido. Usuário ID: ${decoded.id}, Endpoint: ${req.originalUrl}`);
-        next(); 
+        next();
     } catch (err) { //Si une erreur se produit lors de la verification du token, on passe dans ce bloc catch
-        
+
         // Diferenciar tipos de erros do JWT
 
         //Si l'erreur est que le token a expiré, on informe l'utulisateur et on demande de se reconnecter

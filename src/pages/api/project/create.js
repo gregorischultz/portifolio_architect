@@ -45,7 +45,8 @@ export default async function handler(req, res) {
         description,
         category,
         imagePaths,
-        videoPaths
+        videoPaths,
+        req.user.id
       );
 
       //  Resposta de sucesso
