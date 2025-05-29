@@ -20,8 +20,8 @@ export const createProject = async (title, description, category, images = [], v
                 create: videos.map((url) => ({ url })),
             },
             user: {
-                connect: { id: userId }, // ✅ Conecta com o usuário autenticado
-              },
+                connect: { id: userId }, //  Conecta com o usuário autenticado
+            },
         },
         include: { images: true, videos: true },
     });
