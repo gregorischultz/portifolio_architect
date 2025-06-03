@@ -22,7 +22,7 @@ export default function AdminPage() {
 
         const fetchProjects = async () => {
             try {
-                const res = await fetch("/api/projects", {
+                const res = await fetch("/api/project", {
                     headers: { Authorization: `Bearer ${token}` }, //  Envia o token no cabeçalho
                 });
                 if (!res.ok) throw new Error("Erro ao carregar os projetos.");
