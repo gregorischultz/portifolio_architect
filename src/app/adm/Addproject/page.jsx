@@ -43,7 +43,7 @@ export default function AdicionarProjetoPage() {
       }
 
       alert("✅ Projeto criado com sucesso!");
-      router.push("/admin");
+      router.push("/admin/Addproject");
     } catch (err) {
       setError(err.message);
     }

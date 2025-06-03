@@ -1,0 +1,41 @@
+.profile {
+    padding: 24px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .image {
+    width: 436px;
+    height: 508px;
+    border-radius: 24px;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .name {
+    font-size: 60px;
+    font-family: Montserrat;
+    font-weight: 800;
+    line-height: 68px;
+    color: black;
+    text-transform: capitalize;
+  }
+  .description {
+    font-size: 18px;
+    font-family: Montserrat;
+    font-weight: 400;
+    line-height: 26px;
+    color: black;
+    text-align: justify;
+  }
+  .highlight {
+    color: #FC6C0F;
+    font-weight: 500;
+  }

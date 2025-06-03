@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 
 export default function ServicosSection() {
   const [currentSlider, setCurrentSlider] = useState(0);
-
+  const [projects, setProjects] = useState([]);
   const [sliderRef, slider] = useKeenSlider({
     loop: true,
     slides: { perView: 1, spacing: 24, },
@@ -20,30 +20,50 @@ export default function ServicosSection() {
     centered: true,
   });
 
+  useEffect(() => {
+    fetch('/api/project')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Dados recebidos:", data);
+        setProjects(data);
+      })
+      .catch((err) => console.error('Erro ao buscar projetos:', err));
+  }, []);
+
+  useEffect(() => {
+    if (!slider) return;
+    const interval = setInterval(() => {
+      slider.current?.next();
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [slider]);
+
   return (
     <section className={styles.services}>
       <h2 className={styles.title}>Nossos serviços</h2>
       {/* Carrossel de imagens */}
       <div className={styles.sliderWrapper}>
         <div ref={sliderRef} className={`keen-slider ${styles.slider}`}>
-          {[780, 780, 780, 780, 780].map((w, idx) => (
-            <div
-              key={idx}
-              className={`keen-slider__slide ${idx === currentSlider ? styles.activeSlide : styles.inactiveSlide
-                }`}
-            >
+          {projects.map((project, idx) => (
+            project?.images?.length > 0 ? (
               <div
-                className={styles.slideImageWrapper}
-                style={{ width: w, height: (w * 480) / 780 }}
+                key={project.id}
+                className={`keen-slider__slide ${idx === currentSlider ? styles.activeSlide : styles.inactiveSlide
+                  }`}
               >
-                <Image
-                  src={`https://placehold.co/${w}x${(w * 480) / 780}`}
-                  alt={`Slide ${idx + 1}`}
-                  fill
-                  className={styles.slideImage}
-                />
+                <div
+                  className={styles.slideImageWrapper}
+                  style={{ width: 780, height: (780 * 480) / 780 }}
+                >
+                  <Image
+                    src={project.images[0].url}
+                    alt={`Slide ${idx + 1}`}
+                    fill
+                    className={styles.slideImage}
+                  />
+                </div>
               </div>
-            </div>
+            ) : null
           ))}
         </div>
       </div>

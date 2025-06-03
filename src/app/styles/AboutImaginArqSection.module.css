@@ -1,0 +1,67 @@
+.about {
+    padding: 24px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .title {
+    font-size: 60px;
+    font-family: Montserrat;
+    font-weight: 800;
+    line-height: 68px;
+    color: black;
+    text-transform: capitalize;
+  }
+  .quote {
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 800;
+    line-height: 32px;
+    color: black;
+  }
+  .highlight {
+    color: #FC6C0F;
+  }
+  .description {
+    font-size: 18px;
+    font-family: Montserrat;
+    font-weight: 400;
+    line-height: 26px;
+    color: black;
+    text-align: justify;
+  }
+  .stats {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    padding: 0 80px;
+  }
+  .statNumber {
+    font-size: 64px;
+    font-family: Inter;
+    font-weight: 700;
+    color: #FC6C0F;
+  }
+  .statLabel {
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: 700;
+    color: #1E1E1F;
+    text-align: right;
+  }
+  .button {
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 8px;
+    color: #FC6C0F;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
