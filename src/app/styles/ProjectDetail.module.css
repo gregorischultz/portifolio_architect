@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 80px;
+  gap: 40px;
+}
+
+.breadcrumb {
+  font-size: 18px;
+  font-family: Montserrat;
+  font-weight: 400;
+  display: flex;
+  gap: 8px;
+}
+
+.separator {
+  margin: 0 4px;
+  color: #ccc;
+}
+
+.active {
+  font-weight: 700;
+}
+
+.gallerySection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mainImage {
+  width: 100%;
+  max-width: 1280px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.similarSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.similarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.viewMore {
+  font-size: 18px;
+  color: #FC6C0F;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.similarGrid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.similarCard {
+  width: 416px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.similarImage {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
