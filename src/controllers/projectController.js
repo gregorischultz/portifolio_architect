@@ -106,12 +106,26 @@ export const getAllProjects = async () => {
 
 //funçao para obter detalhas de um projeto especifico
 export const getProjectById = async (id) => {
+    const numericId = parseInt(id);
+    if (isNaN(numericId)) throw new Error('ID inválido.');
+
     const project = await prisma.project.findUnique({
-        where: { id },
+        where: { id: numericId },
         include: { images: true, videos: true },
     });
-    if (!project) {
-        throw new Error('Projeto nao encontrado.');
-    }
-    return project;
+
+    if (!project) throw new Error('Projeto não encontrado.');
+
+    // Busca projetos da mesma categoria, exceto o atual
+    const similar = await prisma.project.findMany({
+        where: {
+            category: project.category,
+            id: { not: numericId },
+        },
+        include: { images: true },
+        take: 3,
+    });
+
+    // Adiciona o campo similar manualmente
+    return { ...project, similar };
 };
