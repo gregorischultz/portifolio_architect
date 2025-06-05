@@ -15,7 +15,7 @@ export default function SobrePage() {
     return (
         <>
             <NavBar />
-            <Hero />
+            <Hero backgroundImage="/Hero2.png" />
             <main>
                 <ProfileSection />
                 <AboutImaginArqSection />
