@@ -7,6 +7,7 @@ import { use } from 'react';
 import Contato from '@/app/componentes/Contato';
 import Footer from '@/app/componentes/Footer';
 import NavBar from '@/app/componentes/NavBar';
+import Hero from '@/app/componentes/Hero';
 
 export default function ProjectDetailPage(props) {
     const [project, setProject] = useState(null);
@@ -31,6 +32,7 @@ export default function ProjectDetailPage(props) {
     return (
         <main className={styles.container}>
             <NavBar />
+            <Hero />
             {/* Breadcrumb inline */}
             <nav className={styles.breadcrumb}>
                 <span>Início</span>
