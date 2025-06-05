@@ -1,7 +1,7 @@
 .filters {
     display: flex;
     gap: 1rem;
-    padding-bottom: 2rem;
+    padding: 40px 50px;
 }
 
 .button {

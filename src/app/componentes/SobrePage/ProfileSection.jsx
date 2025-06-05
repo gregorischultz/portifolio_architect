@@ -1,10 +1,11 @@
 import styles from '@/app/styles/ProfileSection.module.css'
+import PhilImg from '../../../../public/phil.png'
 
 export default function ProfileSection() {
   return (
     <section className={styles.profile}>
       <div className={styles.content}>
-        <img src="https://placehold.co/436x508" alt="Philippe Carvalho" className={styles.image} />
+        <img src="/phil.png"alt="Philippe Carvalho" className={styles.image} />
         <div className={styles.text}>
           <h2 className={styles.name}>Philippe Carvalho</h2>
           <p className={styles.description}>
