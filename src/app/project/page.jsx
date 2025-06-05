@@ -5,6 +5,8 @@ import Breadcrumb from "../componentes/ProjectPage/Breadcrumb";
 import ProjectFilters from "../componentes/ProjectPage/ProjectFilters";
 import ProjectGrid from "../componentes/ProjectPage/ProjectGrid";
 import NavBar from "../componentes/NavBar";
+import Contato from "../componentes/Contato";
+import Footer from "../componentes/Footer";
 
 export default function Projetos() {
     const [projects, setProjects] = useState([]);
@@ -28,6 +30,8 @@ export default function Projetos() {
             <Breadcrumb />
             <ProjectFilters />
             <ProjectGrid projects={projects} />
+            <Contato />
+            <Footer />
         </>
     );
 }
