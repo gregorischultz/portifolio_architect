@@ -1,5 +1,6 @@
 .about {
     padding: 24px 80px;
+    padding-top: 85px;
     display: flex;
     flex-direction: column;
     gap: 40px;
