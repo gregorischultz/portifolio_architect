@@ -1,6 +1,16 @@
+"use client"
+
 import styles from '@/app/styles/AboutImaginArqSection.module.css'
+import { useRouter } from 'next/navigation';
 
 export default function AboutImaginArqSection() {
+  const router = useRouter();
+
+  const handleAddProject = () => {
+        router.push("/project");
+    };
+
+
   return (
     <section className={styles.about}>
       <h2 className={styles.title}>Sobre ImaginARQ</h2>
@@ -31,7 +41,7 @@ export default function AboutImaginArqSection() {
           <span className={styles.statLabel}>Anos de Experiência</span>
         </div>
       </div>
-      <button className={styles.button}>Ver todos os projectos</button>
+      <button className={styles.button} onClick={handleAddProject} >Ver todos os projectos</button>
     </section>
   )
 }

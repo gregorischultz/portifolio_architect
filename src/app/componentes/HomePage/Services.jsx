@@ -5,7 +5,7 @@ import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import styles from '../../styles/Services.module.css';
 import { useState, useEffect } from 'react';
-
+import { useRouter } from "next/navigation";
 
 
 export default function ServicosSection() {
@@ -19,6 +19,7 @@ export default function ServicosSection() {
     },
     centered: true,
   });
+  const router = useRouter();
 
   useEffect(() => {
     fetch('/api/project')
@@ -37,6 +38,10 @@ export default function ServicosSection() {
     }, 4000);
     return () => clearInterval(interval);
   }, [slider]);
+
+   const handleAddProject = () => {
+        router.push("/project");
+    };
 
   return (
     <section className={styles.services}>
@@ -92,7 +97,7 @@ export default function ServicosSection() {
 
       {/* Botão alinhado à direita */}
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <button className={styles.button}>
+        <button className={styles.button} onClick={handleAddProject} >
           Ver todos os projectos
           <svg width="20" height="20" viewBox="0 0 12 12" fill="none">
             <path d="M4 2L8 6L4 10" stroke="#FC6C0F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
