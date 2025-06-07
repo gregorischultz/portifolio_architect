@@ -1,5 +1,7 @@
 .testimonials {
     padding: 24px 80px;
+    padding-top: 85px;
+    padding-bottom: 65px;
     display: flex;
     flex-direction: column;
     gap: 40px;

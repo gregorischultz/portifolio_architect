@@ -17,19 +17,19 @@ export default function FAQ() {
         },
         {
             question: "Quais tipos de projetos vocês atendem?",
-            answer: "",
+            answer: "Trabalhamos com uma ampla variedade de projetos, incluindo residenciais, comerciais, urbanísticos e sustentáveis. Seja você um arquiteto, construtor ou cliente final, adaptamos nossos serviços às suas necessidades específicas.",
         },
         {
             question: "Quais ferramentas e tecnologias vocês utilizam?",
-            answer: "",
+            answer: "Usamos softwares líderes do mercado, como AutoCAD, SketchUp, V-Ray e outras ferramentas avançadas para garantir alta precisão e qualidade nos modelos 3D e renderizações.",
         },
         {
             question: "Quanto tempo leva para entregar um projeto?",
-            answer: "",
+            answer: "O prazo de entrega depende da complexidade e do tamanho do projeto. Para projetos simples, o prazo pode ser de 3 a 5 dias úteis. Já projetos mais complexos podem levar de 1 a 2 semanas. Oferecemos prazos personalizados de acordo com a necessidade do cliente.",
         },
         {
             question: "Posso solicitar ajustes no modelo ou na renderização após a entrega?",
-            answer: "",
+            answer: "Sim! Estamos comprometidos em garantir a sua satisfação. Incluímos uma rodada de ajustes no valor do projeto. Caso sejam necessárias modificações adicionais, elas podem ser discutidas e cobradas à parte.",
         },
     ];
 

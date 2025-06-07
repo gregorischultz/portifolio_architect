@@ -88,10 +88,18 @@ export const updateProject = async (id, title, descripition, images, videos) => 
 
 //funçao para remover um projeto
 export const deleteProject = async (id) => {
-    const deleteProject = await prisma.project.delete({
-        where: { id },
+    const numericId = Number(id);
+
+    // Primeiro: excluir dependências manuais
+    await prisma.image.deleteMany({ where: { projectId: numericId } });
+    await prisma.video.deleteMany({ where: { projectId: numericId } });
+
+    // Agora: pode deletar o projeto
+    const deleted = await prisma.project.delete({
+        where: { id: numericId },
     });
-    return deleteProject;
+
+    return deleted;
 };
 
 
