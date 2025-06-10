@@ -1,12 +1,7 @@
 import prisma from "@/lib/prisma";
 
-
-
-
-
 //funçao para adicionar novo projeto
-export const createProject = async (title, description, category, images = [], videos = [], userId) => { // ✅ Corrigido: 'descripition' → 'description'
-
+export const createProject = async (title, description, category, images = [], videos = [], userId) => {
     // cria o projeto no banco de dados
     const project = await prisma.project.create({
         data: {
@@ -29,62 +24,66 @@ export const createProject = async (title, description, category, images = [], v
     return project;
 };
 
-
-
 //funçao para atualizar um projeto existente
-export const updateProject = async (id, title, descripition, images, videos) => {
-    const existingProject = await prisma.project.findUnique({
-        where: { id },
-        include: { images: true, videos: true }
-    });
+export const updateProject = async (id, title, description, images, videos) => {
+    try {
+        const numericId = Number(id); // Converte o ID para número
+        if (isNaN(numericId)) {
+            throw new Error("ID inválido.");
+        }
 
-    if (!existingProject) {
-        throw new Error("Projeto nao encontrado");
+        const existingProject = await prisma.project.findUnique({
+            where: { id: numericId },
+            include: { images: true, videos: true }
+        });
+
+        if (!existingProject) {
+            throw new Error("Projeto nao encontrado");
+        }
+
+        //Para manter imagens que ja existem e nao foram removidas
+        const imageUrlsToAdd = images.filter(
+            (url) => !existingProject.images.some((img) => img.url === url)
+        );
+        const imageIdsToDelete = existingProject.images
+            .filter((img) => !images.includes(img.url))
+            .map((img) => img.id);
+
+        //Para manter os videos que ja existem e nao foram removidos
+        const videoUrlsToAdd = videos.filter(
+            (url) => !existingProject.videos.some((vid) => vid.url === url)
+        );
+        const videoIdsToDelete = existingProject.videos
+            .filter((vid) => !videos.includes(vid.url))
+            .map((vid) => vid.id);
+
+        const updatedProject = await prisma.project.update({
+            where: { id: numericId },
+            data: {
+                title,
+                description, // ✅ Corrigido: 'descripition' → 'description'
+                images: {
+                    deleteMany: {
+                        id: { in: imageIdsToDelete },
+                    },
+                    create: imageUrlsToAdd.map((url) => ({ url })),
+                },
+                // Excluir vídeos removidos
+                videos: {
+                    deleteMany: {
+                        id: { in: videoIdsToDelete },
+                    },
+                    create: videoUrlsToAdd.map((url) => ({ url })),
+                },
+            },
+            include: { images: true, videos: true },
+        });
+        return updatedProject;
+    } catch (error) {
+        console.error("Erro em updateProject:", error);
+        throw new Error(`Erro ao atualizar projeto: ${error.message}`); // Re-lança o erro com uma mensagem mais descritiva
     }
-
-
-    //Para manter imagens que ja existem e nao foram removidas
-    const imageUrlsToAdd = images.filter(
-        (url) => !existingProject.images.some((img) => img.url === url)
-    );
-    const imageIdsToDelete = existingProject.images
-        .filter((img) => !images.includes(img.url))
-        .map((img) => img.id);
-
-
-    //Para manter os videos que ja existem e nao foram removidos    
-    const videoUrlsToAdd = videos.filter(
-        (url) => !existingProject.videos.some((vid) => vid.url === url)
-    );
-    const videoIdsToDelete = existingProject.videos
-        .filter((vid) => !videos.includes(vid.url))
-        .map((vid) => vid.id);
-
-
-    const updatedProject = await prisma.project.update({
-        where: { id },
-        data: {
-            title,
-            descripition,
-            images: {
-                deleteMany: {
-                    id: { in: imageIdsToDelete },
-                },
-                create: imageUrlsToAdd.map((url) => ({ url })),
-            },
-            // Excluir vídeos removidos
-            videos: {
-                deleteMany: {
-                    id: { in: videoIdsToDelete },
-                },
-                create: videoUrlsToAdd.map((url) => ({ url })),
-            },
-        },
-        include: { images: true, videos: true },
-    });
-    return updatedProject;
 };
-
 
 //funçao para remover um projeto
 export const deleteProject = async (id) => {
@@ -102,7 +101,6 @@ export const deleteProject = async (id) => {
     return deleted;
 };
 
-
 //funçao para listar todos os projetos (para exibiçao publica)
 export const getAllProjects = async () => {
     const projects = await prisma.project.findMany({
@@ -110,7 +108,6 @@ export const getAllProjects = async () => {
     });
     return projects;
 };
-
 
 //funçao para obter detalhas de um projeto especifico
 export const getProjectById = async (id) => {
