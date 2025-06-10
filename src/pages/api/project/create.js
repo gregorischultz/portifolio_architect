@@ -1,6 +1,6 @@
 import { createProject } from "@/controllers/projectController";
 import { authenticateToken } from "@/middleware/auth";
-import { parseForm, config as formidableConfig } from "@/lib/parseForm.mjs"; // ✅ [ADICIONADO]
+import { parseForm, config as formidableConfig } from "@/lib/parseForm.js"; // ✅ [ADICIONADO]
 import fs from "fs"; 
 import path from "path"; 
 

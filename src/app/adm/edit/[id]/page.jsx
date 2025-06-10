@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import NavBar from "@/app/componentes/NavBar";
 
 export default function EditProjectPage() {
   const { id } = useParams();
@@ -79,6 +80,7 @@ export default function EditProjectPage() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <NavBar />
       <h2>Editar Projeto</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <input

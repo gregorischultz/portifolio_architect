@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import NavBar from "@/app/componentes/NavBar";
 
 export default function AdicionarProjetoPage() {
   const [title, setTitle] = useState("");
@@ -20,7 +21,7 @@ export default function AdicionarProjetoPage() {
     e.preventDefault();
     setError("");
 
-    
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
@@ -51,6 +52,7 @@ export default function AdicionarProjetoPage() {
 
   return (
     <main style={{ maxWidth: "600px", margin: "0 auto", padding: "2rem" }}>
+      <NavBar />
       <h1>Adicionar Projeto</h1>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label>Título</label>
