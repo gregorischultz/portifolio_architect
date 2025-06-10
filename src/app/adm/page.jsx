@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "@/app/styles/ADMpage.module.css";
+import NavBar from "../componentes/NavBar";
 
 export default function AdminPage() {
     const [projects, setProjects] = useState([]);
@@ -60,6 +61,7 @@ export default function AdminPage() {
 
     return (
         <div className={styles.container}>
+            <NavBar />
             <h2>Painel Administrativo</h2>
 
             <button className={styles.addButton} onClick={handleAddProject}>
