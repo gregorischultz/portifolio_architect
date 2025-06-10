@@ -11,6 +11,7 @@ import Hero from "../componentes/Hero";
 
 export default function Projetos() {
     const [projects, setProjects] = useState([]);
+    
 
     useEffect(() => {
         async function fetchProjects() {
@@ -30,7 +31,6 @@ export default function Projetos() {
             <Hero />
             <div><NavBar /></div>
             <Breadcrumb />
-            <ProjectFilters />
             <ProjectGrid projects={projects} />
             <Contato />
             <Footer />
