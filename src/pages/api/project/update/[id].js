@@ -38,7 +38,8 @@ export default async function handler(req, res) {
             }
 
             // Processa imagens
-            const imagePaths = [];
+            // Processa imagens
+            let imagePaths = [];
             if (files.images) {
                 const imgs = Array.isArray(files.images) ? files.images : [files.images];
                 imgs.forEach((file) => {
@@ -47,7 +48,12 @@ export default async function handler(req, res) {
                         imagePaths.push(`/uploads/${filename}`);
                     }
                 });
+            } else {
+                //  Se nenhuma imagem nova foi enviada, buscar as imagens existentes
+                const existing = await getProjectById(Number(id)); // Você precisa ter essa função
+                imagePaths = existing?.images?.map(img => img.url) || [];
             }
+
 
             console.log("Atualizando projeto com os seguintes dados:", {
                 id,

@@ -79,7 +79,7 @@ export default function EditProjectPage() {
   if (loading) return <p>Carregando...</p>;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ paddingTop: "85px" }} >
       <NavBar />
       <h2>Editar Projeto</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}

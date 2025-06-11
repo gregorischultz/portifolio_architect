@@ -51,7 +51,7 @@ export default function AdicionarProjetoPage() {
   };
 
   return (
-    <main style={{ maxWidth: "600px", margin: "0 auto", padding: "2rem" }}>
+    <main style={{ paddingTop: "150px", backgroundColor: "lightblue" }} >
       <NavBar />
       <h1>Adicionar Projeto</h1>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
