@@ -2,7 +2,7 @@ import styles from '@/app/styles/ProjectCard.module.css'
 
 export default function ProjectCard({ project }) {
 
-  const imgUrl = project.images?.[0]?.url || '/placeholder.jpg';
+  const imgUrl = project.images?.[0]?.url;
 
   return (
     <div className={styles.card}>
